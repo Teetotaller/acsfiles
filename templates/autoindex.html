@@ -1,0 +1,45 @@
+{% extends '__autoindex__/autoindex.html' %}
+
+{% block meta %}
+  {{ super() }}
+
+{% endblock %}
+
+
+{% block header %}
+    <script type="text/javascript">
+
+    $(document).ready(function() {
+        document.title = 'Accessed files';
+    });
+
+</script>
+  <div style="width: 600px; margin: 30px auto;" >
+    <div>
+    <table>
+     <h2>Upload new File</h2>
+            <tr><td rowspan="2" valign="middle">
+            <form action="{{ url_for('autoindex') }}" method="post" enctype="multipart/form-data">
+                <p><input type = 'file' name = 'file'>
+                    <input type = 'submit' value= 'Upload' style="border: 1px solid #e34761;border-radius: 2px;"></p>
+            </form>
+            </td><td align="center" >
+                {{ current_user.name }}
+            </td></tr>
+                <tr>
+
+                   <td align="center">
+                <form action={{ url_for('logout') }}>
+                    <button style="border: 1px solid #e34761;border-radius: 2px;">LOGOUT</button>
+                </form>
+        </td>
+            </tr>
+        </table>
+    </div>
+    <h2>Files in directory</h2>
+{% endblock %}
+
+{% block footer %}
+  </div>
+{% endblock %}
+
